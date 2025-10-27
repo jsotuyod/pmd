@@ -36,7 +36,7 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 2
     - uses: actions/cache@v4
@@ -79,7 +79,7 @@ jobs:
       run: |
         echo "artifacts_path=$(realpath ..)" >> $GITHUB_ENV
     - name: Upload regression tester report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: pmd-regression-tester
         path: ${{ env.artifacts_path }}/target/pr-*-diff-report-*.tar.gz
